@@ -1,0 +1,113 @@
+
+
+#droppable-zone {
+  border: 10px dashed rgb(255, 175, 129);
+  height: 200px;
+  width: 330px;
+  position: relative;
+  overflow: hidden;
+}
+
+#droppable-zone.hover {
+  border: 10px dashed #aaa;
+}
+
+#droppable-zone-wrapper {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+#droppable-zone-text {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 24px;
+  overflow: hidden;
+}
+
+.droppable-file {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+
+button {
+
+  font-size: 24pt;
+  max-width: 92%;
+  width: 92%;
+  height: 48px;
+  border: 3px double #ccc;
+
+}
+input {
+  /*font-family:Consolas,'Lucida Console','DejaVu Sans Mono',monospace;*/
+  font-size: 8pt;
+  max-width: 100%;
+  width: 100%;
+  height: 20px;
+  border: 2px double #ccc;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 5px;
+  background: #e0e0e0; /* Old browsers */
+  background: -moz-linear-gradient(top, #e0e0e0 0%, #ffffff 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e0e0e0), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #e0e0e0 0%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #e0e0e0 0%,#ffffff 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #e0e0e0 0%,#ffffff 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #e0e0e0 0%,#ffffff 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e0e0e0', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+
+::-webkit-input-placeholder { 
+  text-align: center;
+  line-height: 20px;
+  font-size: 16pt;
+}
+::-moz-placeholder { 
+  text-align: center;
+  line-height: 200px;
+  font-size: 16pt;
+}
+:-ms-input-placeholder{ 
+  text-align: center;
+  line-height: 20px;
+  font-size: 16pt;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create two unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 0px;
+  height: 580px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+  width: 15%;
+}
+
+.right {
+  width: 85%;
+}
+
+/* Clear floats after the columns */
+.rows:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
