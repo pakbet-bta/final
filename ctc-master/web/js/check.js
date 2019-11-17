@@ -4,7 +4,8 @@
 
 
   $(document).ready(function() {
-    var input = $('#input');
+    var input = $('#'+appConfig.openFileInputName);
+    alert(appConfig.openFileInputName);
     var output = $('#output');
 
     var dropzone = $('#droppable-zone');
