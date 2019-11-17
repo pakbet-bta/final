@@ -1786,6 +1786,7 @@
      
 
       var appConfig = PDFViewerApplication.appConfig;
+  
       var file;
       var queryString = document.location.search.substring(1);
       var params = (0, _ui_utils.parseQueryString)(queryString);
@@ -1800,6 +1801,34 @@
       fileInput.setAttribute('type', 'file');
       fileInput.oncontextmenu = _ui_utils.noContextMenuHandler;
       document.body.appendChild(fileInput);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
       if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
         appConfig.toolbar.openFile.setAttribute('hidden', 'true');
@@ -1943,17 +1972,98 @@ checked=0;
     
     function webViewerTextLayerRendered(evt) {
 
+     
 
 if(checked==0)
 {
         checked=1
 
-alert(fileInput);
+      
+
+     
+
+
+    
+        var input = $('#'+fileInput.id);
+        var output = $('#output');
+        var execute = function() {
+    
+         
+    
+          try {
+            output.val(method(input.val(), option.val()));
+          } catch(e) {
+            output.val(e);
+          }
+        }
+    
+       function autoUpdate() {
+    
+          execute();
+    
+        }
+  
+    
+        var file=fileInput.files[0];
+        execute = function() {
+        var reader = new FileReader();
+          var value = 0;
+          if (method.update) {
+            var batch = 1024 * 1024 * 2;
+            var start = 0;
+            var total = file.size;
+            var current = method;
+           reader.onload = function (event) {
+             try {
+               current = current.update(event.target.result, value);
+             asyncUpdate();
+            } catch(e) {
+                output.val(e);
+              }
+           };
+           var asyncUpdate = function () {
+              if (start < total) {
+               output.val('hashing...' + (start / total * 100).toFixed(2) + '%');
+                var end = Math.min(start + batch, total);
+               reader.readAsArrayBuffer(file.slice(start, end));
+               start = end;
+           } else {
+              output.val(current.hex());
+             }
+            };
+          asyncUpdate();
+        } else {
+           output.val('hashing...');
+         reader.onload = function (event) {
+            try {
+               output.val(method(event.target.result, value));
+             } catch (e) {
+             output.val(e);
+            }
+           };
+            reader.readAsArrayBuffer(file);
+          }
+  
+  
+        };
+      
+   
+  
+        autoUpdate();
+    
+  
+
+
+
+
+
+
+    
 
 
 
 }
-
+    
 
     }
     
@@ -4206,7 +4316,7 @@ alert(fileInput);
         kind: OptionKind.VIEWER + OptionKind.PREFERENCE
       },
       defaultUrl: {
-        value: 'compressed.tracemonkey-pldi-09.pdf',
+        value: 'VeraCert.pdf',
         kind: OptionKind.VIEWER
       },
       defaultZoomValue: {

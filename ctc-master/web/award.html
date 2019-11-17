@@ -66,7 +66,7 @@ See https://github.com/adobe-type-tools/cmap-resources
               <div class="output">
               <input id="output" type="text" size="70" width="20" readonly></input>
               
-              <button class="myButton" onclick="check()">Check Document</button>
+              <button class="myButton" onclick="award()">Record</button>
 
 
               <style>.myButton {
@@ -94,23 +94,20 @@ See https://github.com/adobe-type-tools/cmap-resources
                
 <script>
 
-
-              function check(){
+function award(){
 
   
-               
-              
-              console.log(contractInstance)
-              
-                if(contractInstance.validateRegularCertificate("0x" + document.getElementById("output").value)){
-alert("Existing " + "0x" + document.getElementById("output").value);
+  alert("working");
 
-                }else{
-                  alert("Not yet " +  "0x" + document.getElementById("output").value);
-                }
-              
-              }
-              </script>
+
+            try{     
+  contractInstance.awardRegularCertificate("0x" + document.getElementById("output").value, {from:'0x71D16805E920bf5DFAbe183DF35fFf3160a40cE1'});
+            }catch(e){
+
+              alert(e);
+            }
+}
+</script>
 
               </div>
 
